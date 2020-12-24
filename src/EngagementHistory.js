@@ -19,14 +19,14 @@ function EngagementHistory(props) {
     const { row } = props;
     const { open } = props;
     return (
-        <TableCell style={{ paddingBottom: 10, paddingTop: 10  ,
+        <TableCell style={{ paddingBottom: 10, paddingTop: 10 ,
     }} colSpan={2}>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={open} timeout="auto" unmountOnExit style={{ backgroundColor:'#00152e'}}>
                 <Box margin={1}>
                     <Typography variant="h6" gutterBottom component="div">
                         ENGAGEMENT HISTORY
             </Typography>
-                    <Table size="small" aria-label="purchases">
+                    <Table size="small" aria-label="purchases" >
                         <TableHead>
                             <TableRow>
                                 <TableCell>Date</TableCell>

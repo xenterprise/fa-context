@@ -64,7 +64,7 @@ function Rowdata(props) {
         <TableCell align="right">{row.league}</TableCell>
       </TableRow>
 
-      <TableRow className={classes.subroot}>
+      <TableRow >
         {/* subtable => Engagement history  */}
         <EngagementHistory row={row} open={open} />
 
