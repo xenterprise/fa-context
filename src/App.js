@@ -24,7 +24,8 @@ const useRowStyles = makeStyles({
   root: {
     '& > *': {
       borderBottom: 'unset',
-      backgroundColor:'#041f42'
+      backgroundColor:'#041f42',
+      color:'white'
     },
   },
   subroot: {
@@ -35,13 +36,9 @@ const useRowStyles = makeStyles({
       // paddingBottom: 10,
     },
   },
-  spacing: {
-    '& > *': {
-      paddingTop: 10,
-    paddingBottom: 10,
-      // bordercollapse: separate !important,
-    },
-  },
+fontcolor:{
+  color:'white',
+},
 });
 function Rowdata(props) {
   const { row } = props;
@@ -50,16 +47,16 @@ function Rowdata(props) {
 
   return (
     <React.Fragment>
-      <TableRow className={classes.root}>
-        <TableCell>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+      <TableRow className={classes.root} >
+        <TableCell >
+          <IconButton  aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell component="th" scope="row" >
           {row.club_name}
         </TableCell>
-        <TableCell align="right">{row.main_ground}</TableCell>
+        <TableCell align="right" >{row.main_ground}</TableCell>
         <TableCell align="right">{row.address}</TableCell>
         <TableCell align="right">{row.league}</TableCell>
       </TableRow>
@@ -97,7 +94,7 @@ export default function APP() {
   const classes = useRowStyles();
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{color:"white"}}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>

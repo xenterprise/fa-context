@@ -19,10 +19,10 @@ function Qualifications(props) {
     const { row } = props;
     const { open } = props;
     return (<TableCell style={{ paddingBottom: 10, paddingTop: 10 }} colSpan={6}>
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        <Collapse in={open} timeout="auto" unmountOnExit style={{ backgroundColor:'#00152e'}}>
             {/* for qualification */}
 
-            <Box margin={1}>
+            <Box margin={0}>
                 <Typography variant="h6" gutterBottom component="div">
                     Qualification
             </Typography>
