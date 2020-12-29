@@ -1,4 +1,3 @@
-import { recomposeColor } from "@material-ui/core";
 import React from 'react'
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
@@ -6,24 +5,22 @@ import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import { Col, Row } from 'react-bootstrap';
-import Paper from '@material-ui/core/Paper';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+import { MuiThemeProvider} from '@material-ui/core/styles';
 import getMuiTheme from './styles/Overridestyles'
+import useStyles from './styles/Makestyles'
 function Qualifications(props) {
     const { row } = props;
     const { open } = props;
+    const classes = useStyles(); 
+
     return (
         <MuiThemeProvider theme={getMuiTheme()}>
 
-    <TableCell style={{ paddingBottom: 0, paddingTop: 3,paddingLeft:0,paddingRight:0}} colSpan={6}>
-        <Collapse in={open} timeout="auto" unmountOnExit style={{ backgroundColor:'#00152e'}}>
+    <TableCell className={classes.Rowspaicng} colSpan={6}>
+        <Collapse in={open} timeout="auto" unmountOnExit className={classes.SubTable}>
             {/* for qualification */}
 
             <Box margin={0}>
