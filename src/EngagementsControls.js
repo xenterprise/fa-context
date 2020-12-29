@@ -116,7 +116,7 @@ class EngagemenstControls extends React.Component {
                 <Grid md={2}>
 
                     <h6>Contact</h6>
-                    {/* <Search /> */}
+                     <Search /> 
                 </Grid>
 
                 <Grid md={2}>

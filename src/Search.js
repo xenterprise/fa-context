@@ -10,20 +10,23 @@ const useStyles = makeStyles((theme) => ({
     search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
+      // backgroundColor: fade(theme.palette.common.white, 0.15),
+      color:"#1b9bd7",
       '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
+        // backgroundColor: fade(theme.palette.common.white, 0.25),
+        // color:fade("#1b9bd7", 0.1),
+
       },
       marginRight: theme.spacing(2),
       marginLeft: 0,
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
+        marginLeft: theme.spacing(-2),
         width: 'auto',
       },
     },
     searchIcon: {
-      padding: theme.spacing(0, 2),
+       padding: theme.spacing(0, 2),
       height: '100%',
       position: 'absolute',
       pointerEvents: 'none',
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
     },
     inputRoot: {
-        color: 'inherit',
+         color: 'inherit',
       },
       inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
@@ -55,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
       <SearchIcon />
     </div>
     <InputBase
-      placeholder="Search…"
+      placeholder="Search for Contact"
       classes={{
         root: classes.inputRoot,
         input: classes.inputInput,
