@@ -15,66 +15,8 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-
+import getMuiTheme from './styles/Overridestyles'
 import './App.css';
-const   getMuiTheme = () =>
-createMuiTheme({
-  overrides: {
-    // MUIDataTable: {
-    //   root: {
-    //     backgroundColor: '#AAF',
-    //   },
-    //   paper: {
-    //     boxShadow: 'none',
-    //   },
-    // },
-    // MuiToolbar: {
-    //   root: {
-    //     borderBottom: 'gray',
-    //   },
-    // },
-    MuiCollapse:{
-        wrapper:{
-            borderRight:"2px solid gray"
-
-        },
-    },
-    MuiTableHead:{
-        root:{
-backgroundColor:"#03162e"
-        },
-    },
-    MuiTableBody:{
-        root:{
-            backgroundColor:"#16283d"
-        },
-        
-    },
-    MuiTableCell: {
-      body: {
-        color: 'white',
-      },
-      head:{color: 'white'}
-    },
-    // MuiBox:{
-    //     root:{
-    //         borderRight:"2px solid white"
-    //     }
-    // }
-    // MUIDataTableSelectCell: {
-    //   headerCell: {
-    //     backgroundColor: 'blue',
-    //   },
-    // },
-    // MuiTableFooter: {
-    //   root: {
-    //     '& .MuiToolbar-root': {
-    //       backgroundColor: 'white',
-    //     },
-    //   },
-    // },
-  },
-});
 function EngagementHistory(props) {
     const { row } = props;
     const { open } = props;

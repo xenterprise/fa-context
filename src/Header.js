@@ -18,60 +18,9 @@ import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/
 import EngagemenstControls from './EngagementsControls'
 import { CounterContext } from './context/counter-context'
 import { useContext, useState } from 'react';
+import useStyles from './styles/Makestyles'
+import getMuiTheme from './styles/Overridestyles'
 
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-  
-  navbarDisplayFlex: {
-    display: `flex`,
-    justifyContent: `space-around`
-  },
-  navDisplayFlex: {
-    display: `flex`,
-    justifyContent: `space-around`
-  },
-  linkText: {
-    textDecoration: `none`,
-    textTransform: `uppercase`,
-    color: `white`
-  }
-});
-const   getMuiTheme = () =>
-createMuiTheme({
-  overrides: {
-    MuiAccordionSummary:{
-      content:{
-        margin:"0px 0px",
-        // padding:"0px px",
-        // border:"2px solid yellow"
-        "&$expanded": {
-          margin:"0px 0px",              }
-      },
-    
-      root:{
-        padding:"0px 0px",
-        // backgroundColor:"#041f42",
-      }
-    },
-    // MuiAccordionSummary:{
-    //   root:{
-    //     padding:"0px 0px",
-    //     // margin:"0px 0px",
-    //     backgroundColor:"#03162e",
-       
-    //   },
-    // },
-    MuiAccordionDetails:{
-      root:{
-        backgroundColor:"#041f42",
-        // minWidth:"100px"
-      }
-    },
-  }
- 
-});
 const navLinks = [
   { title: `DASHBOARD`, path: `/about-us` },
   { title: `CONTACTS`, path: `/product` },
@@ -121,10 +70,6 @@ const Header = () => {
     </AccordionSummary>
     <AccordionDetails>
     <EngagemenstControls row={state.clubs} />
-          {/* <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography> */}
         </AccordionDetails>
     </Accordion>
     </MuiThemeProvider>

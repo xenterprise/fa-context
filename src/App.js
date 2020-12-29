@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-
-import Box from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,8 +9,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
-import { Col, Row } from 'react-bootstrap';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -23,85 +18,8 @@ import { CounterContext } from './context/counter-context'
 import { useContext, useState } from 'react';
 import Image from './main.jpg'
 import Header from './Header'
-import EngagemenstControls from './EngagementsControls'
-
-// import { Multiselect } from 'multiselect-react-dropdown';
-import MultiSelect from "@khanacademy/react-multi-select";
-import { CSVLink } from "react-csv";
-import ExportCsv from './ExportCsv'
-
-const useRowStyles = makeStyles({
-  root: {
-    '& > *': {
-      borderBottom: 'unset',
-      backgroundColor: '#041f42',
-      color: 'white',
-    },
-  },
-  subroot: {
-    '& > *': {
-      borderBottom: 'unset',
-      backgroundColor: '#00152e',
-    },
-  },
-
-
-
-});
-const getMuiTheme = () =>
-  createMuiTheme({
-    overrides: {
-      // MuiTableRow:{
-      //   root: {
-      //     backgroundColor:"#000000",
-      //   },
-      // },
-      MUIDataTable: {
-        root: {
-          backgroundColor: "red",
-        },
-        paper: {
-          boxShadow: 'none',
-        },
-      },
-      MuiToolbar: {
-        root: {
-          backgroundColor: '#f00',
-        },
-      },
-      MuiTableCell: {
-        body: {
-          color: 'white',
-        },
-        head: {
-          color: 'white',
-          backgroundColor: "#00152e"
-        }
-      },
-      MUIDataTableSelectCell: {
-        headerCell: {
-          backgroundColor: 'blue',
-        },
-      },
-      // MuiTableRow:{
-      //   root:{
-      //     borderTop:"2px solid rgba(63, 81, 181, 0.04) ! important"
-      //   },
-      // },
-      MuiTableFooter: {
-        root: {
-          '& .MuiToolbar-root': {
-            backgroundColor: 'white',
-          },
-        },
-      },
-    },
-  });
-// const csvReport = {
-//   data: data,
-//   headers: headers,
-//   filename: 'Clue_Mediator_Report.csv'
-// };
+import useRowStyles from './styles/Makestyles'
+import getMuiTheme from './styles/Overridestyles'
 const headers = [
   { label: "First Name", key: "firstName" },
   { label: "Last Name", key: "lastName" },
@@ -128,7 +46,6 @@ function Rowdata(props) {
   const [backgroundColor, setbackgroundColor] = React.useState("#041f42");
 
   const classes = useRowStyles();
-  // border: 1px solid 
   return (
     <React.Fragment >
       <TableRow className={classes.root}
@@ -138,8 +55,8 @@ function Rowdata(props) {
         onMouseLeave={() => {
           setbackgroundColor("#041f42");
         }}
-    onClick={()=>(setOpen(!open))}  >
-     
+        onClick={() => (setOpen(!open))}  >
+
         <TableCell component="th" scope="row" style={{ paddingTop: 20 }}  >
           {row.club_name}
         </TableCell>
@@ -147,7 +64,7 @@ function Rowdata(props) {
         <TableCell align="left">{row.address}</TableCell>
         <TableCell align="left">{row.league}</TableCell>
         <TableCell >
-          <IconButton aria-label="expand row" style={{color:"white"}} size="small" onClick={() => setOpen(!open)}>
+          <IconButton aria-label="expand row" style={{ color: "white" }} size="small" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -177,21 +94,15 @@ export default function APP() {
   return (
     <div  >
       <Header />
-      {/* <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-      </IconButton> */}
-      {/* <Collapse in={open} timeout="auto" unmountOnExit style={{ backgroundColor: '#00152e', color: "white" }} collapsedHeight="10px">
-        <EngagemenstControls row={state.clubs} />
-
-      </Collapse> */}
       <MuiThemeProvider theme={getMuiTheme()}>
         <TableContainer component={Paper} >
 
-          <Table aria-label="collapsible table" style={{backgroundImage: `url(${Image})`
-}} >
+          <Table aria-label="collapsible table" style={{
+            backgroundImage: `url(${Image})`
+          }} >
             <TableHead  >
               <TableRow  >
-            
+
                 <TableCell>Contact Name</TableCell>
                 <TableCell align="left">Role</TableCell>
                 <TableCell align="left">Club</TableCell>

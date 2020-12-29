@@ -15,30 +15,7 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-
-const   getMuiTheme = () =>
-createMuiTheme({
-  overrides: {
-   
-    MuiTableCell: {
-      body: {
-        color: 'white',
-      },
-      head:{color: 'white'}
-    },
-    MuiTableHead:{
-        root:{
-backgroundColor:"#03162e"
-        },
-    },
-    MuiTableBody:{
-        root:{
-            backgroundColor:"#16283d"
-        },
-        
-    },
-  },
-});
+import getMuiTheme from './styles/Overridestyles'
 function Qualifications(props) {
     const { row } = props;
     const { open } = props;
