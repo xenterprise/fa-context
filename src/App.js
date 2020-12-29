@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,98 +21,194 @@ import Qualifications from './Qualifications'
 import EngagementHistory from './EngagementHistory'
 import { CounterContext } from './context/counter-context'
 import { useContext, useState } from 'react';
+import Image from './main.jpg'
+import Header from './Header'
+import EngagemenstControls from './EngagementsControls'
+
+// import { Multiselect } from 'multiselect-react-dropdown';
+import MultiSelect from "@khanacademy/react-multi-select";
+import { CSVLink } from "react-csv";
+import ExportCsv from './ExportCsv'
 
 const useRowStyles = makeStyles({
   root: {
     '& > *': {
       borderBottom: 'unset',
-      backgroundColor:'#041f42',
-      color:'white'
+      backgroundColor: '#041f42',
+      color: 'white',
     },
   },
   subroot: {
     '& > *': {
       borderBottom: 'unset',
-      backgroundColor:'#00152e',
-      // paddingTop: 10,
-      // paddingBottom: 10,
+      backgroundColor: '#00152e',
     },
   },
-fontcolor:{
-  color:'white',
-},
+
+
+
 });
+const getMuiTheme = () =>
+  createMuiTheme({
+    overrides: {
+      // MuiTableRow:{
+      //   root: {
+      //     backgroundColor:"#000000",
+      //   },
+      // },
+      MUIDataTable: {
+        root: {
+          backgroundColor: "red",
+        },
+        paper: {
+          boxShadow: 'none',
+        },
+      },
+      MuiToolbar: {
+        root: {
+          backgroundColor: '#f00',
+        },
+      },
+      MuiTableCell: {
+        body: {
+          color: 'white',
+        },
+        head: {
+          color: 'white',
+          backgroundColor: "#00152e"
+        }
+      },
+      MUIDataTableSelectCell: {
+        headerCell: {
+          backgroundColor: 'blue',
+        },
+      },
+      // MuiTableRow:{
+      //   root:{
+      //     borderTop:"2px solid rgba(63, 81, 181, 0.04) ! important"
+      //   },
+      // },
+      MuiTableFooter: {
+        root: {
+          '& .MuiToolbar-root': {
+            backgroundColor: 'white',
+          },
+        },
+      },
+    },
+  });
+// const csvReport = {
+//   data: data,
+//   headers: headers,
+//   filename: 'Clue_Mediator_Report.csv'
+// };
+const headers = [
+  { label: "First Name", key: "firstName" },
+  { label: "Last Name", key: "lastName" },
+  { label: "Email", key: "email" },
+  { label: "Age", key: "age" }
+];
+
+const data = [
+  { firstName: "Warren", lastName: "Morrow", email: "sokyt@mailinator.com", age: "36" },
+  { firstName: "Gwendolyn", lastName: "Galloway", email: "weciz@mailinator.com", age: "76" },
+  { firstName: "Astra", lastName: "Wyatt", email: "quvyn@mailinator.com", age: "57" },
+  { firstName: "Jasmine", lastName: "Wong", email: "toxazoc@mailinator.com", age: "42" },
+  { firstName: "Brooke", lastName: "Mcconnell", email: "vyry@mailinator.com", age: "56" },
+  { firstName: "Christen", lastName: "Haney", email: "pagevolal@mailinator.com", age: "23" },
+  { firstName: "Tate", lastName: "Vega", email: "dycubo@mailinator.com", age: "87" },
+  { firstName: "Amber", lastName: "Brady", email: "vyconixy@mailinator.com", age: "78" },
+  { firstName: "Philip", lastName: "Whitfield", email: "velyfi@mailinator.com", age: "22" },
+  { firstName: "Kitra", lastName: "Hammond", email: "fiwiloqu@mailinator.com", age: "35" },
+  { firstName: "Charity", lastName: "Mathews", email: "fubigonero@mailinator.com", age: "63" }
+];
 function Rowdata(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-  const classes = useRowStyles();
+  const [backgroundColor, setbackgroundColor] = React.useState("#041f42");
 
+  const classes = useRowStyles();
+  // border: 1px solid 
   return (
-    <React.Fragment>
-      <TableRow className={classes.root} >
+    <React.Fragment >
+      <TableRow className={classes.root}
+        style={{ paddingBottom: 0, paddingTop: 30, paddingRight: 0, paddingLeft: 0, border: `2px solid ${backgroundColor}` }} onMouseEnter={() => {
+          setbackgroundColor('  #1b9bd7');
+        }}
+        onMouseLeave={() => {
+          setbackgroundColor("#041f42");
+        }}
+    onClick={()=>(setOpen(!open))}  >
+     
+        <TableCell component="th" scope="row" style={{ paddingTop: 20 }}  >
+          {row.club_name}
+        </TableCell>
+        <TableCell align="left" >{row.main_ground}</TableCell>
+        <TableCell align="left">{row.address}</TableCell>
+        <TableCell align="left">{row.league}</TableCell>
         <TableCell >
-          <IconButton  aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+          <IconButton aria-label="expand row" style={{color:"white"}} size="small" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row" >
-          {row.club_name}
-        </TableCell>
-        <TableCell align="right" >{row.main_ground}</TableCell>
-        <TableCell align="right">{row.address}</TableCell>
-        <TableCell align="right">{row.league}</TableCell>
       </TableRow>
-
-      <TableRow >
+      {/* background */}
+      <TableRow  >
         {/* subtable => Engagement history  */}
         <EngagementHistory row={row} open={open} />
-
         {/* subtable =>Qualifications  */}
         <Qualifications row={row} open={open} />
-
       </TableRow>
     </React.Fragment>
   );
 }
 
-
-const rows = [
-  {
-    contactName: "Frozen yoghurt", role: 159, club: 6.0, league: 24, history: [
-      { date: '2020-01-05', club: '11091700', staff: 3 },
-      { date: '2020-01-02', club: 'Anonymous', staff: 1 },
-    ]
-  },
-  {
-    contactName: "Frozen yoghur", role: 159, club: 6.0, league: 24, history: [
-      { date: '2020-01-0', club: '1109170', staff: 3 },
-      { date: '2020-01-0', club: 'Anonymou', staff: 1 },
-    ]
-  }
-];
-
 export default function APP() {
   const [state, dispatch] = useContext(CounterContext)
   const classes = useRowStyles();
+  const [open, setOpen] = React.useState(false);
+  const [options, setoptions] = React.useState([
+    { label: "One", value: 1 },
+    { label: "Two", value: 2 },
+    { label: "Three", value: 3 },
+  ]);
+
 
   return (
-    <TableContainer component={Paper} style={{color:"white"}}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Contact Name</TableCell>
-            <TableCell align="right">Role</TableCell>
-            <TableCell align="right">Club</TableCell>
-            <TableCell align="right">League</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody >
-          {state.clubs.map((row) => (
-            <Rowdata key={row.club_name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div  >
+      <Header />
+      {/* <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+      </IconButton> */}
+      {/* <Collapse in={open} timeout="auto" unmountOnExit style={{ backgroundColor: '#00152e', color: "white" }} collapsedHeight="10px">
+        <EngagemenstControls row={state.clubs} />
+
+      </Collapse> */}
+      <MuiThemeProvider theme={getMuiTheme()}>
+        <TableContainer component={Paper} >
+
+          <Table aria-label="collapsible table" style={{backgroundImage: `url(${Image})`
+}} >
+            <TableHead  >
+              <TableRow  >
+            
+                <TableCell>Contact Name</TableCell>
+                <TableCell align="left">Role</TableCell>
+                <TableCell align="left">Club</TableCell>
+                <TableCell align="left">League</TableCell>
+                <TableCell />
+              </TableRow>
+            </TableHead>
+            <TableBody   >
+              {state.clubs.map((row) => (
+                <Rowdata key={row.club_name} row={row} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </MuiThemeProvider>
+
+
+    </div>
   );
 }

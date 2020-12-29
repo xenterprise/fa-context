@@ -14,11 +14,38 @@ import { Col, Row } from 'react-bootstrap';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
 
+const   getMuiTheme = () =>
+createMuiTheme({
+  overrides: {
+   
+    MuiTableCell: {
+      body: {
+        color: 'white',
+      },
+      head:{color: 'white'}
+    },
+    MuiTableHead:{
+        root:{
+backgroundColor:"#03162e"
+        },
+    },
+    MuiTableBody:{
+        root:{
+            backgroundColor:"#16283d"
+        },
+        
+    },
+  },
+});
 function Qualifications(props) {
     const { row } = props;
     const { open } = props;
-    return (<TableCell style={{ paddingBottom: 10, paddingTop: 10 }} colSpan={6}>
+    return (
+        <MuiThemeProvider theme={getMuiTheme()}>
+
+    <TableCell style={{ paddingBottom: 0, paddingTop: 3,paddingLeft:0,paddingRight:0}} colSpan={6}>
         <Collapse in={open} timeout="auto" unmountOnExit style={{ backgroundColor:'#00152e'}}>
             {/* for qualification */}
 
@@ -31,7 +58,7 @@ function Qualifications(props) {
                         <TableRow>
                             <TableCell>Date</TableCell>
                             <TableCell>Club</TableCell>
-                            <TableCell align="right">Staff</TableCell>
+                            <TableCell align="left">Staff</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -41,13 +68,14 @@ function Qualifications(props) {
                                     {historyRow.date}
                                 </TableCell>
                                 <TableCell>{historyRow.contact}</TableCell>
-                                <TableCell align="right">{historyRow.staff}</TableCell>
+                                <TableCell align="left">{historyRow.staff}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </Box>
         </Collapse>
-    </TableCell>)
+    </TableCell>
+    </MuiThemeProvider>)
 }
 export default Qualifications

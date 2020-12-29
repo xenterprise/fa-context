@@ -14,42 +14,103 @@ import { Col, Row } from 'react-bootstrap';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
 
+import './App.css';
+const   getMuiTheme = () =>
+createMuiTheme({
+  overrides: {
+    // MUIDataTable: {
+    //   root: {
+    //     backgroundColor: '#AAF',
+    //   },
+    //   paper: {
+    //     boxShadow: 'none',
+    //   },
+    // },
+    // MuiToolbar: {
+    //   root: {
+    //     borderBottom: 'gray',
+    //   },
+    // },
+    MuiCollapse:{
+        wrapper:{
+            borderRight:"2px solid gray"
+
+        },
+    },
+    MuiTableHead:{
+        root:{
+backgroundColor:"#03162e"
+        },
+    },
+    MuiTableBody:{
+        root:{
+            backgroundColor:"#16283d"
+        },
+        
+    },
+    MuiTableCell: {
+      body: {
+        color: 'white',
+      },
+      head:{color: 'white'}
+    },
+    // MuiBox:{
+    //     root:{
+    //         borderRight:"2px solid white"
+    //     }
+    // }
+    // MUIDataTableSelectCell: {
+    //   headerCell: {
+    //     backgroundColor: 'blue',
+    //   },
+    // },
+    // MuiTableFooter: {
+    //   root: {
+    //     '& .MuiToolbar-root': {
+    //       backgroundColor: 'white',
+    //     },
+    //   },
+    // },
+  },
+});
 function EngagementHistory(props) {
     const { row } = props;
     const { open } = props;
     return (
-  
-        <TableCell style={{ paddingBottom: 10, paddingTop: 10 ,
+        <MuiThemeProvider theme={getMuiTheme()}>
+
+        <TableCell style={{ paddingBottom: 0, paddingTop: 3,paddingRight:0,paddingLeft:0,color:"white",
     }} colSpan={2}>
-            <Collapse in={open} timeout="auto" unmountOnExit style={{ backgroundColor:'#00152e'}}>
+            <Collapse in={open} timeout="auto" unmountOnExit style={{ backgroundColor:'#00152e'}} >
                 <Box margin={0} >
                     <Typography variant="h6" gutterBottom component="div" >
                         ENGAGEMENT HISTORY
             </Typography>
-                    <Table size="small" aria-label="purchases" >
-                        <TableHead>
+                    <Table size="small" aria-label="purchases"  >
+                        <TableHead >
                             <TableRow >
-                                <TableCell>Date</TableCell>
+                                <TableCell >Date</TableCell>
                                 <TableCell>Club</TableCell>
-                                <TableCell align="right">Staff</TableCell>
+                                <TableCell align="left">Staff</TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody>
+                        <TableBody  >
                             {row.engagementHistory.map((historyRow) => (
                                 <TableRow key={historyRow.date}>
                                     <TableCell component="th" scope="row">
                                         {historyRow.date}
                                     </TableCell>
                                     <TableCell>{historyRow.contact}</TableCell>
-                                    <TableCell align="right">{historyRow.staff}</TableCell>
+                                    <TableCell align="left">{historyRow.staff}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </Box>
             </Collapse>
-        </TableCell>
+        </TableCell></MuiThemeProvider>
    
     )
 }

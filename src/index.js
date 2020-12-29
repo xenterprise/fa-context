@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CounterContextProvider } from './context/counter-context'
-
+import Header from './../src/Header'
 ReactDOM.render(
+  
   <CounterContextProvider>
+    {/* <Header> */}
     <React.StrictMode>
+
       <App />
     </React.StrictMode>,
+    {/* </Header>, */}
   </CounterContextProvider>,
   document.getElementById('root')
 );
