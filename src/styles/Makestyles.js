@@ -14,28 +14,45 @@ const useRowStyles = makeStyles((theme) => ({
             backgroundColor: '#00152e',
         },
     },
+    //Edit Account details form
+    FormDetails: {
+        '& .MuiFormControl-root': {
+            width: '100%',
+            // height:"100%",
+            margin: theme.spacing(1),
+            // color:"white"
+       
+        }
 
+    },
+    // paper in account details
+    paperContent: {
+        margin: theme.spacing(1),
+        padding: theme.spacing(3),
+        width:"80%"
+
+    },
     // spacing between table rows and font color
     Rowspaicng: {
         paddingBottom: 0,
-        paddingTop: 3,
+        paddingTop: 8,
         paddingRight: 0,
         paddingLeft: 0,
         color: "white"
     },
 
-// collapse table
+    // collapse table
     SubTable: {
         backgroundColor: '#00152e',
         borderRight: "1px solid white"
     },
 
     // collapse icon arrow color
-    iconcolor:{
-        color:"white"
+    iconcolor: {
+        color: "white"
     },
     // for nav bar
-    navbarcolor:{
+    navbarcolor: {
         backgroundColor: "#041f42"
     },
     navbarDisplayFlex: {
@@ -71,6 +88,7 @@ const useRowStyles = makeStyles((theme) => ({
     },
     searchIcon: {
         padding: theme.spacing(0, 2),
+        // paddingTop:"2px",
         height: '100%',
         position: 'absolute',
         pointerEvents: 'none',
@@ -86,6 +104,7 @@ const useRowStyles = makeStyles((theme) => ({
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
+        borderBottom: "1px solid white",
         width: '100%',
         [theme.breakpoints.up('md')]: {
             width: '20ch',
@@ -132,7 +151,11 @@ const useRowStyles = makeStyles((theme) => ({
         head: { color: 'white' }
     },
 
-
+//spaces between rows of form
+formrows:{
+    marginTop:"10px",
+    //  marginBottom:"15px",
+}
 
 }));
 export default useRowStyles

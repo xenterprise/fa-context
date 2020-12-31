@@ -56,6 +56,36 @@ const getMuiTheme = () =>
           backgroundColor:"#041f42",
         }
       },
-    },
+      // Header icon button 
+      MuiSvgIcon:{
+        root:{
+          paddingTop:"6px"
+        }
+      },
+      // form details 
+      // placeholder color
+      MuiInputLabel:{
+        root:{
+          color:"white"
+        },
+      },
+      // input color 
+      MuiOutlinedInput:{
+        root:{
+          color:"white",
+          backgroundColor:"#1d2749"
+        },
+        input:{
+          color:"white",
+        },
+      },
+     
+      input: {
+        "&:-webkit-autofill": {
+        WebkitBoxShadow: "0 0 0 1000px black inset",
+        backgroundColor:"black"
+        }
+        }
+    }
   });
   export default getMuiTheme

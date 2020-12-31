@@ -18,11 +18,12 @@ import Image from './main.jpg'
 import Header from './Header'
 import useRowStyles from './styles/Makestyles'
 import getMuiTheme from './styles/Overridestyles'
-
+import EditForm from './EditAccount'
 function Rowdata(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   const [backgroundColor, setbackgroundColor] = React.useState("#041f42");
+  const [form, setForm] = React.useState(false);
 
   const classes = useRowStyles();
   return (
@@ -34,7 +35,14 @@ function Rowdata(props) {
         onMouseLeave={() => {
           setbackgroundColor("#041f42");
         }}
-        onClick={() => (setOpen(!open))}  >
+        onClick={() => {
+          console.log("state form b", form, open)
+
+          setOpen(!open)
+          setForm(!form)
+          console.log("state form", form, open)
+
+        }}  >
 
         <TableCell component="th" scope="row" style={{ paddingTop: 20 }}  >
           {row.club_name}
@@ -63,6 +71,7 @@ export default function APP() {
   return (
     <div  >
       <Header />
+      {/* <EditForm/> */}
       <MuiThemeProvider theme={getMuiTheme()}>
         <TableContainer component={Paper} >
           <Table aria-label="collapsible table" style={{

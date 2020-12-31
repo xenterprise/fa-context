@@ -11,6 +11,7 @@ import {  MuiThemeProvider} from '@material-ui/core/styles';
 import getMuiTheme from './styles/Overridestyles'
 import './App.css';
 import useStyles from './styles/Makestyles'
+import { CounterContext } from './context/counter-context'
 
 function EngagementHistory(props) {
     const { row } = props;

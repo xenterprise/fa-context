@@ -73,20 +73,22 @@ const initialState = {
                 , { fullName: "M Ehsan", role: "Employ", email: "ehsan@fa.com", phone: "0111111113" }
             ]
         }
-    ]
+    ],
+    open:false
 }
 
 const reducer = (state = initialState, action) => {
     const newState = { ...state };
 
-    // switch (action.type) {
-    //     case "AGE_UP":
-    //         newState.age = action.val
-    //         break
+    switch (action.type) {
+        case "isFormopen":
+            newState.open = action.value
+            console.log("form red open",newState.open)
+            break
     //     case "AGE_DOWN":
     //         newState.age -= action.val
     //         break
-    // }
+    }
     return newState;
 
 }
