@@ -69,7 +69,7 @@ export default function APP() {
   const [state, dispatch] = useContext(CounterContext)
 
   return (
-    <div  >
+    <div>
       <Header />
       {/* <EditForm/> */}
       <MuiThemeProvider theme={getMuiTheme()}>
@@ -77,16 +77,16 @@ export default function APP() {
           <Table aria-label="collapsible table" style={{
             backgroundImage: `url(${Image})`
           }} >
-            <TableHead  >
-              <TableRow  >
+            <TableHead>
+              <TableRow>
                 <TableCell>Contact Name</TableCell>
                 <TableCell align="left">Role</TableCell>
                 <TableCell align="left">Club</TableCell>
                 <TableCell align="left">League</TableCell>
-                <TableCell />
+                <TableCell/>
               </TableRow>
             </TableHead>
-            <TableBody   >
+            <TableBody>
               {state.clubs.map((row) => (
                 <Rowdata key={row.club_name} row={row} />
               ))}

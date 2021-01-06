@@ -2,9 +2,6 @@ import React, { useReducer, createContext } from 'react'
 
 export const CounterContext = createContext()
 
-// const initialState = {
-//     age: 21
-// }
 const initialState = {
     todos: [],
     clubs: [
@@ -74,7 +71,7 @@ const initialState = {
             ]
         }
     ],
-    open:false
+    open: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -83,11 +80,8 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "isFormopen":
             newState.open = action.value
-            console.log("form red open",newState.open)
+            console.log("form red open", newState.open)
             break
-    //     case "AGE_DOWN":
-    //         newState.age -= action.val
-    //         break
     }
     return newState;
 
